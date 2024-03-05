@@ -1,0 +1,19 @@
+function [hash] = AvgHash(pic)
+%AverageHash Creates a hash of a greyscale image using the average has
+%algorithm
+%   Input:
+%       pic: uint8 m-by-n array corresponding to the greyscale image
+%   Output:
+%       hash: logical     
+pic = double(pic);
+[rows,cols] = size(pic);
+ 
+avg = sum(pic,"all")/(rows*cols);
+
+above_or_below = pic>=avg;
+above_or_below = above_or_below';
+hash = above_or_below(:);
+hash=logical(hash');
+
+
+end
